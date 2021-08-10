@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <title>Angularjs filter change date format in controller - ItSolutionStuff.com</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+   
+<body ng-app='myapp'>
+    
+  <div ng-controller="myCtrl">
+    <p>2019-02-13</p>
+    <p><strong>{{ item }}</strong></p>
+  </div>
+    
+</body>
+   
+<script type="text/javascript">
+   
+   var app = angular.module('myapp', []);
+    
+   app.controller('myCtrl', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
+        $scope.item = $filter('date')('2019-02-13', "dd/MM/yyyy");
+   }]);
+   
+</script>
+</html>

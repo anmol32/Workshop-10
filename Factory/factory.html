@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <title>Factory Example 1</title>
+  
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+    </script>
+    <script>
+        var utility = angular.module('myApp', []);
+  
+        utility.factory('random', function() {
+            var randomObject = {};
+            var number = Math.floor(Math.random() * 100);
+            randomObject.generate = function() {
+                return number;
+            };
+            return randomObject;
+        });
+        
+        utility.controller('thisapp', function($scope, random) {
+            $scope.generateRandom = function() {
+                $scope.randomNumber = random.generate();
+            };
+        });
+    </script>
+</head>
+  
+<body>
+    <h1 style="color:green">Anmol Tiwari</h1>
+    <h2>Examples of factory</h2>
+    <div ng-app="myApp" ng-controller="thisapp">
+        <button ng-click="generateRandom()">
+          Generate Random Number
+      </button>
+        <br>{{randomNumber}}
+    </div>
+</body>
+  
+</html>
